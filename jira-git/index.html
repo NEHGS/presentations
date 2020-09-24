@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+	<title>NEHGS Jira and Git Workflow</title>
+	<link rel="stylesheet" href="../dist/reveal.css">
+	<link rel="stylesheet" href="../dist/theme/black.css" id="theme">	
+	<link rel="stylesheet" href="../plugin/highlight/zenburn.css">
+	<!--Add support for earlier versions of Internet Explorer -->
+	<!--[if lt IE 9]>
+	<script src="lib/js/html5shiv.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h1>NEHGS Jira and Git Workflow</h1>
+				<h2>July 2016</h2>
+			</section>
+			<section>
+				<img class="stretch" src="full-deployment.jpg" alt="Deployment Chart" />
+			</section>
+			<section>
+				<h3>Start Progress</h3>
+				<img class="stretch" src="start-progress.png" alt="Start Jira Progress" />
+			</section>
+			<section>
+				<section>
+					<h2>Local Environment</h2>
+					<p>Getting Most Recent Production Branch</p>
+					<div>
+						<div style="width: 50%; float: left;">
+							<h4>Command Line</h4>
+							<pre>
+								<code data-trim>> git checkout production
+Switched to branch 'production'
+…
+> git pull
+From https://github.com/NEHGS/NEGHS
+Updating 35bbf7c..4037964</code>
+							</pre>
+						</div>
+						<div style="width: 50%; float: left;">
+							<h4>Visual Studio</h4>
+							<img class="stretch" src="vs-pull-production.png" alt="Pull Incoming Commits from Production"/>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h2>Local Environment</h2>
+					<p>I Don't Have a Production Branch!</p>
+					<div>
+						<pre>
+							<code data-trim>
+>git branch production --track origin/production</code>
+						</pre>
+					</div>
+				</section>
+				<section>
+					<h2>Local Environment</h2>
+					<p>Opening a New Branch (Using Production as Parent)</p>
+					<div>
+						<div style="width: 50%; float: left;">
+							<h4>Command Line</h4>
+							<pre>
+								<code data-trim>> git checkout production
+Switched to branch 'production'
+…
+> git checkout -b WB-46-Demo-Ticket
+Switched to a new branch 'WB-46-Demo-Ticket'</code>
+							</pre>
+						</div>
+						<div style="width: 50%; float: left;">
+							<h4>Visual Studio</h4>
+							<img class="stretch" src="vs-new-branch.png" alt="New Branch in Visual Studio"/>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h2>Local Environment</h2>
+					<p>Working on Code</p>
+					<div>
+						<div style="width: 50%; float: left;">
+							<h4>Command Line</h4>
+							<pre>
+								<code>> git commit -m 'WB-46 Demo Commit'</code>
+							</pre>
+						</div>
+						<div style="width: 50%; float: left;">
+							<h4>Visual Studio</h4>
+							<img class="stretch" src="vs-commit.png" alt="Commit in Visual Studio" />
+						</div>
+					</div>
+				</section>
+				<section>
+					<h2>Local Environment</h2>
+					<p>Pushing to Development</p>
+					<div>
+						<div style="width: 50%; float: left;">
+							<h4>Command Line</h4>
+							<pre>
+								<code data-trim>> git push -u origin WB-46-Demo-Ticket</code>
+							</pre>
+						</div>
+						<div style="width: 50%; float: left;">
+							<h4>Visual Studio</h4>
+							<img src="vs-push-branch.png" alt="Push Branch in Visual Studio" class="stretch">
+						</div>
+					</div>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>Development Environment</h2>
+					<p>Merge Feature Branch onto Master</p>
+					<div>
+						<div style="width: 50%; float: left;">
+							<h4>Command Line</h4>
+							<pre>
+<code data-trim>> git fetch
+…
+> git checkout master
+Switched to branch 'master'
+> git merge WB-46-Demo-Ticket
+From https://github.com/NEHGS/NEGHS
+ * branch WB-46-Demo-Ticket -> FETCH_HEAD</code>
+							</pre>
+						</div>
+						<div style="width: 50%; float: left;">
+							<h4>Visual Studio</h4>
+							<img src="vs-merge-branch.png" alt="Merge Branch in Visual Studio" class="stretch">
+						</div>
+					</div>
+				</section>
+				<section>
+					<h2>Development Environment</h2>
+					<p>Push Master Branch Back to Remote</p>
+					<div>
+						<div style="width: 50%; float: left;">
+							<h4>Command Line</h4>
+							<pre>
+<code data-trim>> git checkout master
+Switched to branch 'master'
+> git push origin HEAD
+To https://github.com/NEHGS/NEGHS
+ * branch WB-46-Demo-Ticket -> FETCH_HEAD</code>
+							</pre>
+						</div>
+						<div style="width: 50%; float: left;">
+							<h4>Visual Studio</h4>
+							<img src="vs-push-master.png" alt="Push Master Branch in Visual Studio" class="stretch">
+						</div>
+					</div>
+				</section>
+				<section>
+					<h2>Development Environment</h2>
+					<p>TeamCity will automatically build when it detects changes to Master branch</p>
+					<img src="teamcity-dev-build.png" alt="TeamCity Building Dev Project" class="stretch">
+					<p style="font-size:smaller;">One build per committer</p>
+				</section>
+				<section>
+					<h2>Development Environment</h2>
+					<p>Missed a production push?</p>
+					<div class="fragment">
+						<pre>
+							<code data-trim>>git rebase production</code>
+						</pre>
+						<p><span style="text-decoration: underline;">Only</span> if you haven't pushed the branch to remote yet</p>
+					</div>
+				</section>
+				<section>
+					<h2>Development Environment</h2>
+					<p>Code for the feature should now be deployed on DWEB</p>
+					<img src="jira-ready-for-testing.png" alt="Jira Ready for Testing" class="stretch">
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>Testing on Development</h2>
+					<img src="jira-testing-zone.png" alt="Jira Workflow" class="stretch">
+				</section>
+				<section>
+					<h2>Testing on Development</h2>
+					<p>If the ticket passes testing on DWEB by Datamatics</p>
+					<img src="jira-ready-for-nehgs.png" alt="Jira Ready for NEHGS" class="stretch">
+				</section>
+				<section>
+					<h2>Testing on Development</h2>
+					<p>If the ticket passes testing on DWEB by NEHGS</p>
+					<img src="jira-ready-for-staging.png" alt="Jira Ready for Staging" class="stretch">
+				</section>
+				<section>
+					<h2>Testing on Development</h2>
+					<p>If ticket fails testing</p>
+										<div>
+						<div style="width: 48%; float: left;">
+							<h4>Datamatics</h4>
+							<img src="jira-return-in-progress.png" alt="Jira Return to In Progress" style="max-width:100%;">
+						</div>
+						<div style="width:4%; float: left;">&nbsp;</div>
+						<div style="width: 48%; float: left;">
+							<h4>NEHGS</h4>
+							<img src="jira-reopen.png" alt="Jira Reopen" style="max-width:100%;">
+						</div>
+					</div>
+					<p style="font-size: smaller; clear: both;">Resume work on the local branch and repeat "Local Environment" and "Development Environment" steps</p>
+				</section>
+			</section>
+			<section>
+				<section>
+					<div>
+						<h2>Development Environment</h2>
+						<p>Individual testing on tickets on remote environment</p>
+					</div>
+					<p style="min-height: 20px;">&nbsp;</p>
+					<div class="fragment">
+						<h2>Staging Environment</h2>
+						<p>Regression &amp; Integration testing of a full slate of tickets</p>
+					</div>
+				</section>
+				<section>
+					<h2>Staging Environment</h2>
+					<p>By end of Day 8 of sprint, a slate of tickets in "Ready for Staging" should be selected for that sprint&rsquo;s production push</p>
+				</section>
+				<section>
+					<h2>Staging Environment</h2>
+					<p>Check that all feature branches are based off the most recent production commit</p>
+					<pre>
+<code data-trim>> git fetch
+> git rev-parse production
+4037964046dac94e18cc4b77aad9df59e69ff4fa
+> git merge-base WB-46-Demo-Ticket production
+4037964046dac94e18cc4b77aad9df59e69ff4fa</code>
+					</pre>
+					<p>If the commit hashes do not match, the feature branch must be rebased onto the most recent production branch</p>
+				</section>
+				<section>
+					<h2>Staging Environment</h2>
+					<p>Merge Feature Branch onto Staging</p>
+					<div>
+						<div style="width: 50%; float: left;">
+							<h4>Command Line</h4>
+							<pre>
+<code data-trim>> git fetch
+…
+> git checkout staging
+Switched to branch 'staging'
+> git merge WB-46-Demo-Ticket
+From https://github.com/NEHGS/NEGHS
+ * branch WB-46-Demo-Ticket -> FETCH_HEAD</code>
+							</pre>
+						</div>
+						<div style="width: 50%; float: left;">
+							<h4>Visual Studio</h4>
+							<img src="vs-merge-staging.png" alt="Merge Staging Branch in Visual Studio" class="stretch">
+						</div>
+					</div>
+					<p>Repeat this step for all candidate tickets</p>
+				</section>
+				<section>
+					<h2>Staging Environment</h2>
+					<p>Push Staging Branch Back to Remote</p>
+					<div>
+						<div style="width: 50%; float: left;">
+							<h4>Command Line</h4>
+							<pre>
+<code data-trim>> git checkout staging
+Switched to branch 'staging'
+> git push origin HEAD
+To https://github.com/NEHGS/NEGHS</code>
+							</pre>
+						</div>
+						<div style="width: 50%; float: left;">
+							<h4>Visual Studio</h4>
+							<img src="vs-push-master.png" alt="Push Master Branch in Visual Studio" class="stretch">
+						</div>
+					</div>
+				</section>
+				<section>
+					<h2>Staging Environment</h2>
+					<p>Manually run TeamCity deploy onto SWEB</p>
+					<img src="teamcity-staging-build.png" alt="Run Staging Build on TeamCity" class="stretch">
+				</section>
+				<section>
+					<h2>Staging Environment</h2>
+					<p>Set status of all deployed tickets to Staged</p>
+					<img src="jira-stage.png" alt="Stage on Jira" class="stretch">
+				</section>
+				<section>
+					<h2>Staging Environment</h2>
+					<p>Something isn't working</p>
+					<ul>
+						<li class="fragment fade-in">
+							<span class="fragment fade-out"><em>You should have caught this on DWEB…</em></span>
+						</li>
+						<li class="fragment">Small edits can be made as new commits directly onto staging</li>
+						<li class="fragment">Otherwise the merge commit can be reverted</li>
+					</ul>
+					<pre class="fragment">
+<code data-trim>> git log --oneline
+446908b WB-46 Demo commit
+…
+> git revert 446908b -m 1</code>
+					</pre>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>Production Environment</h2>
+					<p>Code push on Day 10-11 of Sprint</p>
+					<ul>
+						<li>Avoid Wednesdays (Weekly Genealogist traffic spike)</li>
+						<li>Send a digest email of all tickets with status Staged to
+							<ul>
+								<li>Web Development</li>
+								<li>DL Membership</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Production Environment</h2>
+					<p>Merge staging onto production as a single commit</p>
+					<div>
+						<div style="width: 50%; float: left;">
+							<h4>Command Line</h4>
+							<pre>
+<code data-trim>> git checkout production
+Switched to branch 'staging'
+> git pull origin staging
+…
+> git push origin HEAD
+To https://github.com/NEHGS/NEGHS</code>
+							</pre>
+						</div>
+						<div style="width: 50%; float: left;">
+							<h4>Visual Studio</h4>
+							<img src="vs-staging-to-production.png" alt="Push Production Branch in Visual Studio" class="stretch">
+						</div>
+					</div>					
+				</section>
+				<section>
+					<h2>Production Environment</h2>
+					<p>Manually run TeamCity deploy onto Production</p>
+					<img src="teamcity-production-build.png" alt="Production Build on TeamCity" class="stretch">
+				</section>
+				<section>
+					<h2>Production Environment</h2>
+					<p>Success!</p>
+					<p>&nbsp;</p>
+					<p class="fragment">If actually success, send a more detailed email about the changes made to DL Membership</p>
+				</section>
+				<section>
+					<h2>Production Environment</h2>
+					<p>Mark all staged tickets as Done</p>
+				</section>
+			</section>
+			<section>
+				<h1>FIN</h1>
+			</section>
+		</div>
+	</div>
+<script src="../dist/reveal.js"></script>
+<script>
+  // Required, even if empty.
+  Reveal.initialize({
+  });
+</script>
+</body>
+</html>

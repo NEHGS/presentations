@@ -1,0 +1,15 @@
+<RateV4Request USERID="xxxx">
+	<Revision>2</Revision>
+	<Package ID="1ST">
+		<Service>MEDIA</Service>
+		<ZipOrigination>02116</ZipOrigination>
+		<ZipDestination>02170</ZipDestination>
+		<Pounds>0</Pounds>
+		<Ounces>3.12345678</Ounces>
+		<Container>RECTANGULAR</Container>
+		<Size>LARGE</Size>
+		<Width>10</Width>
+		<Length>18</Length>
+		<Height>4</Height>
+	</Package>
+</RateV4Request>

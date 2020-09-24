@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+	<title>NEHGS Accessibility Workflow</title>
+	<link rel="stylesheet" href="../dist/reveal.css">
+	<link rel="stylesheet" href="../dist/theme/black.css" id="theme">	
+	<!--Add support for earlier versions of Internet Explorer -->
+	<!--[if lt IE 9]>
+	<script src="lib/js/html5shiv.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<style>
+	.third {
+		width: 33%;
+		float: left;
+	}
+	.half {
+		width: 50%;
+		float: left;
+	}
+	</style>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h1>NEHGS Accessibility Workflow</h1>
+				<h2>December 2018</h2>
+			</section>
+			<section>
+				<ul>
+					<li>
+						WCAG
+						<ul>
+							<li>Web Content Accessibility Guidelines</li>
+							<span class="fragment">
+								<li>Version 2.1: June 2018</li>
+								<li>Update of 2.0 (2008)</li>
+							</span>
+						</ul>
+					</li>
+					<li class="fragment fade-in-then-semi-out">Section 508</li>
+					<li class="fragment">Accessibility &rarr; a11y</li>
+				</ul>
+			</section>
+			<section>
+				<section>
+					<h1>WCAG 2.1</h1>
+					<ul>
+						<li>Perceivable</li>
+						<li>Operable</li>
+						<li>Understandable</li>
+						<li>Robust</li>
+					</ul>
+					<p><a href="https://www.w3.org/TR/WCAG21/">https://www.w3.org/TR/WCAG21/</a></p>					
+				</section>
+				<section>
+					<h1>Perceivable</h1>
+					<ul>
+						<li>Text alternatives</li>
+						<li>Time-based media alternatives</li>
+						<li>Adaptable</li>
+						<li>Distinguishable</li>
+					</ul>
+				</section>
+				<section>
+					<h1>Operable</h1>
+					<ul>
+						<li>Keyboard Accessible</li>
+						<li>Enough Time</li>
+						<li>Seizure and Physical Reactions</li>
+						<li>Navigable</li>
+						<li>Input Modalities</li>
+					</ul>
+				</section>
+				<section>
+					<h1>Understandable</h1>
+					<ul>
+						<li>Readable</li>
+						<li>Predictable</li>
+						<li>Input Assistance</li>
+					</ul>
+				</section>
+				<section>
+					<h1>Robust</h1>
+					<ul>
+						<li>Compatible</li>
+					</ul>
+				</section>
+				<section>
+					<h1>Success Criteria</h1>
+					<ul>
+						<li>Essential</li>
+						<li>Possible for all types of content</li>
+						<li>Reasonable achievable by content creators</li>
+						<li>Imposition on &ldquo;look and feel&rdquo;</li>
+						<li>Workaround if criteria not met</li>
+					</ul>
+					<div class="fragment">
+						<div class="third">
+							<h2>A</h2>
+						</div>
+						<div class="third">
+							<h2>AA</h2>
+						</div>
+						<div class="third">
+							<h2>AAA</h2>
+						</div>
+					</div>
+					<div class="fragment">
+						<div class="third">
+							<p>Must</p>
+						</div>
+						<div class="third">
+							<p>Should</p>
+						</div>
+						<div class="third">
+							<p>May</p>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h1>Quick Reference</h1>
+					<img src="quick-ref.png" alt="Screenshot of WCAG 2.1 quick reference page">
+				</section>
+			</section>
+			<section>
+				<section>
+					<h1>Tooling</h1>
+					<div class="half">
+						<p>aXe</p>
+						<p>Lighthouse</p>
+						<p>WAVE</p>
+					</div>
+					<div class="half">
+						<p>Koa11y</p>
+						<p>tota11y</p>
+					</div>
+				</section>
+				<section>
+					<h1>aXe</h1>
+					<div class="half">
+						<ul>
+							<li>Most conservative</li>
+							<li>Cites WCAG and explains violations</li>
+							<li>Chrome or Firefox extension</li>
+						</ul>
+					</div>
+					<div class="half"><img src="axe-chrome.png" alt="Report of dweb.americanancestors.org from Axe Accessibility Tools"></div>
+				</section>
+				<section>
+					<h1>Lighthouse</h1>
+					<div class="half">
+						<ul>
+							<li>Also tests performance and best practices</li>
+							<li>Only available in Chrome DevTools</li>
+						</ul>
+					</div>
+					<div class="half"><img src="lighthouse-chrome.png" alt="Report of dweb.americanancestors.org from Chrome Lighthouse"></div>
+				</section>
+				<section>
+					<h1>Wave</h1>
+					<div class="half">
+						<ul>
+							<li>Visually marks violations</li>
+							<li>Best outline</li>
+							<li>Chrome or Firefox extension</li>
+						</ul>
+					</div>
+					<div class="half"><img src="wave-chrome.png" alt="Contrast testing on home page of AmericanAncestors.org with WAVE"></div>
+				</section>
+				<section>
+					<h1>Koa11y</h1>
+					<div class="half">
+						<ul>
+							<li>Most far-reaching</li>
+							<li>Cites WCAG</li>
+							<li>Potential for false positives/judgement calls</li>
+							<li>Standalone application</li>
+						</ul>
+					</div>
+					<div class="half"><img src="koa11y.png" alt="Report of dweb.americanancestors.org from Koa11y"></div>
+				</section>
+				<section>
+					<h1>tota11y</h1>
+					<div class="half">
+						<ul>
+							<li>Visually marks violations</li>
+							<li>Explains violations</li>
+							<li>Bookmarklet</li>
+						</ul>
+					</div>
+					<div class="half"><img src="tota11y.png" alt="Contrast testing on home page of AmericanAncestors.org using Tota11y bookmarklet"></div>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h1>Automated Tooling</h1>
+					<div class="half">
+						<p>aXe</p>
+						<p>Lighthouse</p>
+						<p style="color: #555;">WAVE</p>
+					</div>
+					<div class="half">
+						<p>Pa11y</p>
+						<p style="color: #555;">tota11y</p>
+					</div>
+				</section>
+				<section>
+					<img src="teamcity.png" alt="Indication of build artifacts in TeamCity">
+				</section>
+				<section>
+					<h1>Future State</h1>
+					<p class="fragment">aXe &mdash; Violations will cause build failures</p>
+					<p class="fragment">Lighthouse & pa11y &mdash; Guidance</p>
+				</section>
+			</section>
+			<section>
+				<h1>Links</h1>
+				<div class="half">
+					<ul>
+						<li>
+						WCAG
+						<ul>
+							<li><a href="https://www.w3.org/TR/WCAG21/">Specification</a></li>
+							<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/">Understanding</a></li>
+							<li><a href="https://www.w3.org/WAI/WCAG21/quickref/">Quick Reference</a></li>
+						</ul>
+						</li>
+						<li><a href="https://a11yproject.com/">The a11y Project</a></li>
+					</ul>
+				</div>
+				<div class="half">
+					<ul>
+						<li><a href="https://www.deque.com/axe/">aXe</a></li>
+						<li><a href="https://developers.google.com/web/tools/lighthouse/">Lighthouse</a></li>
+						<li><a href="http://wave.webaim.org/extension/">WAVE</a></li>
+						<li><a href="http://pa11y.org/">pa11y</a></li>
+						<li><a href="http://khan.github.io/tota11y/">tota11y</a></li>
+					</ul>
+				</div>
+			</section>
+			<section>
+				<img src="theend.jpg" alt="Title card reading 'The End'" class="stretch">
+			</section>
+		</div>
+	</div>
+<script src="../dist/reveal.js"></script>
+<script>
+  // Required, even if empty.
+  Reveal.initialize({
+  });
+</script>
+</body>
+</html>

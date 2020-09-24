@@ -1,0 +1,43 @@
+.thirds-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+.reveal section .thirds-grid img {
+	align-self: center;
+}
+
+.bit-grid {
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+}
+.bit-grid aside {
+	color: #777;
+}
+.bit-grid aside p:last-child {
+	color: white;
+}
+.bit-grid aside.tight p {
+	margin: 15px 0;
+}
+.bit-grid aside.tighter p {
+	margin: 10px 0;
+}
+.bit-grid aside.tightest p {
+	margin: 5px 0;
+}
+
+.quarters-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.quarters-grid p {
+	grid-column: span 2;
+}
+.quarters-grid img.rogers {
+	grid-column-start: 1;
+	grid-row: 2;
+}
+.quarters-grid img.hd {
+	grid-column-start: 4;
+	grid-row: 2;
+}

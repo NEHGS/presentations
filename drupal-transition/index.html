@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+	<title>Transition to Drupal</title>
+	<link rel="stylesheet" href="../dist/reveal.css">
+	<link rel="stylesheet" href="../dist/theme/black.css" id="theme">	
+	<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+	<link rel="stylesheet" href="styles.css">
+	<!--Add support for earlier versions of Internet Explorer -->
+	<!--[if lt IE 9]>
+	<script src="lib/js/html5shiv.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h1>Transition to Drupal</h1>
+				<p style="font-size: 3em; font-family: 'Pacifico', cursive;">and You!</p>
+			</section>
+			<section>
+				<h2>Goals</h2>
+				<p>Replace Ektron entirely with Drupal</p>
+			</section>
+			<section>
+				<section>
+					<h2>Benefits</h2>
+					<ul>
+						<li>End heartache of running abandoned CMS</li>
+						<li>Modernize caching and front-end asset management</li>
+						<li>Decommission 'admin' machines</li>
+						<li>Greatly simplify MVC application and repository</li>
+						<li>Potential to containerize MVC application</li>
+					</ul>
+				</section>
+				<section>
+					<h3>End of Ektron Heartache</h3>
+					<ul>
+						<li>Ektron merged into Episerver in 2015</li>
+						<li>Expected end of life in 2020</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Simplify MVC Application</h3>
+					<p>MVC application currently responsible for:</p>
+					<ul>
+						<li>URL Routing</li>
+						<li>Caching CMS content</li>
+						<li>Managing front-end resources</li>
+						<li>Tessitura integration</li>
+						<li><span style="text-decoration: underline;">Search</span></li>
+					</ul>
+				</section>
+				<section>
+					<h3>Modernize MVC Repository</h3>
+					<ul>
+						<li>Remove .DLLs</li>
+						<li>Leverage NuGet for dependencies</li>
+						<li>Upgrade .NET frameworks</li>
+					</ul>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>Current State</h2>
+					<img src="simplified-current.png">
+				</section>
+				<section>
+					<h2>Current State</h2>
+					<div class="flow-grid">
+						<div class="left-arrow">
+							<div class="arrow-text">HTTP Request</div>
+							<div class="arrow-head-left blank"></div>
+							<div class="arrow-body"></div>
+							<div class="arrow-head-right"></div>
+						</div>
+						<div class="service">
+							<img src="nehgs-gold.png">
+						</div>
+						<div class="right-arrow">
+							<div class="arrow-text">HTTP Request</div>
+							<div class="arrow-head-left blank"></div>
+							<div class="arrow-body"></div>
+							<div class="arrow-head-right"></div>
+						</div>
+						<div class="provider">
+							<img src="ektron-logo.png">
+						</div>
+						<div class="left-arrow" style="grid-row: 2;">
+							<div class="arrow-text">Templated HTML</div>
+							<div class="arrow-head-left"></div>
+							<div class="arrow-body"></div>
+							<div class="arrow-head-right blank"></div>
+						</div>
+						<div class="right-arrow" style="grid-row: 2;">
+							<div class="arrow-text">Templated HTML</div>
+							<div class="arrow-head-left"></div>
+							<div class="arrow-body"></div>
+							<div class="arrow-head-right blank"></div>
+						</div>
+						<div class="left-arrow" style="grid-row: 3;">
+							<div class="arrow-text">AJAX Request</div>
+							<div class="arrow-head-left blank"></div>
+							<div class="arrow-body"></div>
+							<div class="arrow-head-right"></div>
+						</div>
+						<div class="service" style="grid-row: 3 / span 2;">
+							<img src="nehgs-gold.png">
+						</div>
+						<div class="right-arrow" style="grid-row: 3;">
+							<div class="arrow-text">Structured Query</div>
+							<div class="arrow-head-left blank"></div>
+							<div class="arrow-body"></div>
+							<div class="arrow-head-right"></div>
+						</div>
+						<div class="provider" style="grid-row: 3 / span 2;">
+							<img src="elasticsearch-logo.png">
+						</div>
+						<div class="left-arrow" style="grid-row: 4;">
+							<div class="arrow-text">Partial HTML</div>
+							<div class="arrow-head-left"></div>
+							<div class="arrow-body"></div>
+							<div class="arrow-head-right blank"></div>
+						</div>
+						<div class="right-arrow" style="grid-row: 4;">
+							<div class="arrow-text">Result JSON</div>
+							<div class="arrow-head-left"></div>
+							<div class="arrow-body"></div>
+							<div class="arrow-head-right blank"></div>
+						</div>
+					</div>
+				</section>
+				<section>
+					<video controls>
+						<source src="ajax-example.mp4" type="video/mp4" />
+						<source src="ajax-example.webm" type="video/webm" />
+					</video>
+				</section>
+				<section>
+					<h2>Current State</h2>
+					<p>MVC application responsible for:</p>
+					<ul>
+						<li>URL Routing</li>
+						<li>Caching CMS content</li>
+						<li>Managing front-end resources</li>
+						<li>Tessitura integration</li>
+						<li><span style="text-decoration: underline;">Search</span></li>
+					</ul>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>Future State</h2>
+					<img src="simplified-drupal.png">
+				</section>
+				<section>
+					<h2>Future State</h2>
+					<div class="flow-grid">
+						<div class="left-arrow">
+							<div class="arrow-text">HTTP Request</div>
+							<div class="arrow-head-left blank"></div>
+							<div class="arrow-body"></div>
+							<div class="arrow-head-right"></div>
+						</div>
+						<div class="service">
+							<img src="drupal-logo.png">
+						</div>
+						<div class="left-arrow" style="grid-row: 2;">
+							<div class="arrow-text">Templated HTML</div>
+							<div class="arrow-head-left"></div>
+							<div class="arrow-body"></div>
+							<div class="arrow-head-right blank"></div>
+						</div>
+						<div class="left-arrow" style="grid-row: 3;">
+							<div class="arrow-text">AJAX Request</div>
+							<div class="arrow-head-left blank"></div>
+							<div class="arrow-body"></div>
+							<div class="arrow-head-right"></div>
+						</div>
+						<div class="service" style="grid-row: 3 / span 2;">
+							<img src="nehgs-gold.png">
+						</div>
+						<div class="right-arrow" style="grid-row: 3;">
+							<div class="arrow-text">Structured Query</div>
+							<div class="arrow-head-left blank"></div>
+							<div class="arrow-body"></div>
+							<div class="arrow-head-right"></div>
+						</div>
+						<div class="provider" style="grid-row: 3 / span 2;">
+							<img src="elasticsearch-logo.png">
+						</div>
+						<div class="left-arrow" style="grid-row: 4;">
+							<div class="arrow-text">Partial HTML</div>
+							<div class="arrow-head-left"></div>
+							<div class="arrow-body"></div>
+							<div class="arrow-head-right blank"></div>
+						</div>
+						<div class="right-arrow" style="grid-row: 4;">
+							<div class="arrow-text">Result JSON</div>
+							<div class="arrow-head-left"></div>
+							<div class="arrow-body"></div>
+							<div class="arrow-head-right blank"></div>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h2>Future State</h2>
+					<p>MVC application responsible for:</p>
+					<ul>
+						<li><span style="text-decoration: line-through;">URL Routing</span></li>
+						<li><span style="text-decoration: line-through;">Caching CMS content</span></li>
+						<li><span style="text-decoration: line-through;">Managing front-end resources</span></li>
+						<li>Tessitura integration</li>
+						<li><span style="text-decoration: underline;">Search</span></li>
+					</ul>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>Roadmap</h2>
+					<img src="drupal-roadmap.png" alt=''>
+				</section>
+				<section>
+					<p><strong>Content Audit</strong></p>
+					<p class='read-text'>Auditing the current site with an eye towards SEO concerns, maintaining current URLs, and reusing Content Types built for the GU272 and Heritage Tour sites</p>
+				</section>
+				<section>
+					<p><strong>Drupal Site Building</strong></p>
+					<p class='read-text'>Constructing remaining content types and views</p>
+					<p class='footnote'>Dependent on availability of outside design firm</p>
+				</section>
+				<section>
+					<p><strong>Tessitura Configuration</strong></p>
+					<p class='read-text'>Determining the nature of Tessitura's integration with both Drupal and the remaining MVC application.</p>
+					<p class='footnote'>No dependencies, but risks creating a branch of the codebase that would require maintainence until the transition is complete</p>
+				</section>
+				<section>
+					<p><strong>Content Migration</strong></p>
+					<p class='read-text'>Iterable process of migrating Ektron content into Drupal via the Migrate API</p>
+					<p class='footnote'>Dependent on completion of audit and site building</p>
+				</section>
+				<section>
+					<p><strong>View Adaptation</strong></p>
+					<p class='read-text'>Making changes to the HTML Views returned by the MVC application to integrate with the new Drupal views</p>
+					<p class='footnote'>Dependent on Drupal site building</p>
+				</section>
+			</section>
+			<section>
+				<h2>Content Audit</h2>
+				<ul>
+					<li>Content that can be culled</li>
+					<li>New content types to build</li>
+					<li>Maintaining URL redirects</li>
+					<li>Media strategy</li>
+				</ul>
+				<div class="task">
+					<div>
+						<img src="datamatics.png" />
+					</div>
+					<div>
+						<img src="nehgs-gold.png" />
+					</div>
+				</div>
+			</section>
+			<section>
+				<h2>Site Building</h2>
+				<div class="half-col">
+					<p><strong>Content Types</strong></p>
+					<ul>
+						<li>GU272</li>
+						<li>Heritage Tours</li>
+						<li>Newly Created Types</li>
+					</ul>
+				</div>
+				<div class="half-col">
+					<p><strong>Contrib Modules</strong></p>
+					<ul>
+						<li>Calendar</li>
+						<li>Search API</li>
+					</ul>
+				</div>
+				<div class="task">
+					<div>
+						<img src="nehgs-gold.png">
+					</div>
+					<div>
+						<img src="datamatics-drupal.png">
+					</div>
+					<div>
+						<img src="hookson.png">
+					</div>
+				</div>
+			</section>
+			<section>
+				<section>
+					<h2>Tessitura Integration</h2>
+					<p><strong>Drupal: </strong>Segments content</p>
+					<p><strong>MVC: </strong> Authorizes viewing databases</p>
+					<div class="task">
+						<div>
+							<img src="nehgs-gold.png">
+						</div>
+						<div>
+							<img src="datamatics-drupal.png">
+						</div>
+					</div>
+				</section>
+				<section>
+					<h2>Tessitura Integration</h2>
+					<p>MVC site may not need direct access</p>
+					<ul>
+						<li>Can use trusted cookies</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Tessitura Integration</h2>
+					<p>Tessitura <em>requires</em> signing an agreement to see documentation, so <em>nothing</em> is available on Drupal.org</p>
+				</section>
+			</section>
+			<section>
+				<img src="the-end.jpg">
+			</section>
+		</div>
+	</div>
+	<script src="../dist/reveal.js"></script>
+	<script>
+	  // Required, even if empty.
+	  Reveal.initialize({
+	  	dependencies: [
+	  		// Syntax highlight for <code> elements
+			{ src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+		]
+	  });
+	</script>
+</body>
+</html>

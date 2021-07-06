@@ -1,0 +1,124 @@
+.reveal img.noborder {
+	border: none;
+	background: none;
+	box-shadow: none;
+}
+.half-col {
+	width: 50%;
+	float: left;
+}
+.fifth {
+	width: 18%;
+	margin: 0 1% !important;
+	float: left;
+	text-align: center;
+}
+img.img-responsive {
+	max-width:100%;
+}
+.reveal .icon {
+	width: 10%;
+	float: left;
+}
+.reveal .icon img {
+	border: none;
+	background: none;
+	box-shadow: none;		
+}
+.mid-arrow {
+	width: 80%;
+	float: left;
+}
+.reveal .arrow-head-left {
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-right: 20px solid white;
+  float: left;
+  margin-left: 2.5%;
+}
+.reveal .arrow-text {
+	/*line-height: 80%;*/
+	font-size: 20px;
+}
+.reveal .arrow-body {
+  width: 75%;
+  height: 7px;
+  margin: 15px 0;
+  background: white;
+  float: left;
+}
+.reveal .arrow-head-right {
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 20px solid white;
+  float: left;
+}
+.reveal .blank {
+	border-left: 20px solid transparent !important;
+	border-right: 20px solid transparent !important;
+}
+
+.reveal .flow-grid {
+	display: grid;
+	grid-template-columns: [user] 2fr [service-start] 1fr [service-end] 2fr [provider-start] 1fr [provider-end];
+}
+.reveal .left-arrow {
+	grid-column-start: user;
+	grid-column-end; service-start;
+}
+.reveal .service {
+	grid-column-start: service-start;
+	grid-column-end: service-end;
+	grid-row: span 2;
+}
+.reveal .right-arrow {
+	grid-column-start: service-end;
+	grid-column-end: provider-start;
+}
+.reveal .provider {
+	grid-column-start: provider-start;
+	grid-column-end: provider-end;
+	grid-row: span 2;
+}
+
+.reveal .read-text {
+	text-align: left;
+}
+.reveal .footnote {
+	text-align: left;
+	font-style: italic;
+	font-size: large;
+}
+
+.reveal .task {
+	clear: both;
+	display: flex;
+}
+
+.reveal .task div {
+	flex: 1 1 auto;
+}
+
+.reveal .task img{
+	max-height: 163px;
+	height: 100%;
+}
+
+.bit-grid {
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+}
+
+.bit-grid aside {
+	display: flex;
+	flex-direction: column;
+	align-content: space-between;
+}
+
+.bit-grid aside.smaller {
+	font-size: 36px;
+}

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+	<title>American Ancestors Software Stack 2021</title>
+	<link rel="stylesheet" href="../dist/reveal.css">
+	<link rel="stylesheet" href="../dist/theme/black.css" id="theme">	
+	<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+	<link rel="stylesheet" href="styles.css">
+	<!--Add support for earlier versions of Internet Explorer -->
+	<!--[if lt IE 9]>
+	<script src="lib/js/html5shiv.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h1>American Ancestors Software Stack 2021</h1>
+				<p style="font-size: 3em; font-family: 'Pacifico', cursive;">and You!</p>
+			</section>
+			<section>
+				<h2>American Ancestors Software Stack</h2>
+				<ul>
+					<li>Software we maintain</li>
+					<li>Software as a Service we use</li>
+					<li>Software as a Service we assist with</li>
+					<li>Software as a Service we're aware of</li>
+				</ul>
+			</section>
+			<section>
+				<section>
+					<h2>Software We Maintain</h2>
+				</section>
+				<section>
+					<h3>Software We Maintain</h3>
+					<h4>.NET Search Application</h4>
+					<div class="bit-grid">
+						<figure>
+							<img src="search-application.png" />
+						</figure>
+						<aside>
+							<p>Main deployment platform for custom-built code</p>
+							<p>.NET Framework 4.8</p>
+							<p>Deployed on Amazon EC2</p>
+						</aside>
+					</div>
+				</section>
+				<section>
+					<h3>Software We Maintain</h3>
+					<h4>CAT (Collections Administration Tool)</h4>
+					<div class="bit-grid">
+						<figure>
+							<img src="cat.png" />
+						</figure>
+						<aside>
+							<p>Internal GUI for managing databases</p>
+						</aside>
+				</section>
+				<section>
+					<h3>Software We Maintain</h3>
+					<h4>American AncesTREES</h4>
+					<div class="bit-grid">
+						<figure>
+							<img src="trees.png" />
+						</figure>
+						<aside>
+							<p>Family tree app built in Angular</p>
+							<p>Deployed on S3/CloudFront</p>
+							<p>Back-end source pending</p>
+						</aside>
+					</div>
+				</section>
+				<section>
+					<h3>Software We Maintain</h3>
+					<h4>SQL Server</h4>
+					<div class="bit-grid">
+						<figure>
+							<img src="sqlserver.png" />
+						</figure>
+						<aside>
+							<p>Source of truth for genealogical records (and some user data)</p>
+							<p>Always on configuration on EC2</p>
+						</aside>
+					</div>
+				</section>
+				<section>
+					<h3>Software We Maintain</h3>
+					<h4>ETL</h4>
+					<div class="bit-grid">
+						<figure></figure>
+						<aside>
+							<p>Legacy internal tool for ingesting spreadsheets into databases</p>
+							<p>Deployed on EC2</p>
+						</aside>
+					</div>
+				</section>
+				<section>
+					<h3>Software We Maintain</h3>
+					<h4>Python Tools</h4>
+					<div class="bit-grid">
+						<figure>
+							<img src="python-tools.png" />
+						</figure>
+						<aside>
+							<p>One-off tools (generally)</p>
+							<p>Currently being packaged as a private Pip package</p>
+						</aside>
+					</div>
+				</section>
+				<section>
+					<h3>Software We Maintain</h3>
+					<h4>Federated Search</h4>
+					<div class="bit-grid">
+						<figure>
+							<img src="federated-search.png" />
+						</figure>
+						<aside>
+							<p>Drupal/Solr-based search ingesting various sources of database and library data</p>
+						</aside>
+					</div>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>Software We Use</h2>
+				</section>
+				<section>
+					<h3>Software We Use</h3>
+					<h4>Ektron</h4>
+					<div class="bit-grid">
+						<figure>
+							<img src="ektron.png" />
+						</figure>
+						<aside>
+							<p>Legacy CMS</p>
+							<p>Depends on search application for many modern features</p>
+							<p>End of life in 2020 (!!!)</p>
+						</aside>
+					</div>
+				</section>
+				<section>
+					<h3>Software We Use</h3>
+					<h4>Drupal</h4>
+					<div class="bit-grid">
+						<figure>
+							<img src="drupal.png" />
+						</figure>
+						<aside>
+							<p>Modern CMS to be deployed in Fall 2021</p>
+							<p>Deployed on Pantheon</p>
+						</aside>
+					</div>
+				</section>
+				<section>
+					<h3>Software We Use</h3>
+					<h4>GitHub</h4>
+					<div class="bit-grid">
+						<figure>
+							<img src="github.png" />
+						</figure>
+						<aside>
+							<p>It's GitHub</p>
+							<p>May transition to using Actions for CI/CD</p>
+						</aside>
+					</div>
+				</section>
+				<section>
+					<h3>Software We Use</h3>
+					<h4>S3/CloudFront</h4>
+					<div class="bit-grid">
+						<figure>
+							<img src="s3.png" />
+						</figure>
+						<aside>
+							<p>Serves images and CMS assets via CloudFront CDN</p>
+							<p>Backups and archival files also stored</p>
+						</aside>
+					</div>
+				</section>
+				<section>
+					<h3>Software We Use</h3>
+					<h4>TeamCity</h4>
+					<div class="bit-grid">
+						<figure>
+							<img src="teamcity.png" />
+						</figure>
+						<aside>
+							<p>Continuous Integration and Deployment with some automated testing</p>
+							<p>Deployed on EC2</p>
+						</aside>
+					</div>
+				</section>
+				<section>
+					<h3>Software We Use</h3>
+					<h4>Route 53</h4>
+					<div class="bit-grid">
+						<figure>
+							<img src="route53.png" />
+						</figure>
+						<aside>
+							<p>DNS for AmericanAncestors.org</p>
+						</aside>
+					</div>
+				</section>
+				<section>
+					<h3>Software We Use</h3>
+					<h4>ElasticSearch</h4>
+					<div class="bit-grid">
+						<figure>
+							<img src="elasticsearch.png" />
+						</figure>
+						<aside>
+							<p>Indexing for genealogical records</p>
+							<p>Indexed from data in SQL Server</p>
+							<p>Deployed on Elastic.co</p>
+						</aside>
+					</div>
+				</section>
+				<section>
+					<h3>Software We Use</h3>
+					<h4>Wordpress</h4>
+					<div class="bit-grid">
+						<figure>
+							<img src="wordpress.png" />
+						</figure>
+						<aside>
+							<p>Two blogs &mdash; Vita Brevis and Database News</p>
+						</aside>
+					</div>
+				</section>
+				<section>
+					<h3>Software We Use</h3>
+					<h4>Jira</h4>
+					<div class="bit-grid">
+						<figure>
+							<img src="jira.png" />
+						</figure>
+						<aside>
+							<p>Project management for database status, Boston and India development</p>
+							<p>Two-week agile sprints (in a way)</p>
+						</aside>
+					</div>
+				</section>
+				<section>
+					<h3>Software We Use</h3>
+					<h4>1Password</h4>
+					<div class="bit-grid">
+						<figure>
+							<img src="1password.png" />
+						</figure>
+						<aside>
+							<p>Password management for shared accounts</p>
+						</aside>
+					</div>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>Software We Assist With</h2>
+				</section>
+				<section>
+					<h3>Software We Assist With</h3>
+					<h4>Tessitura</h4>
+					<div class="bit-grid">
+						<figure>
+							<img src="tessitura.png" />
+						</figure>
+						<aside class="smaller">
+							<p>Current CRM and source of truth for most user data</p>
+							<p>Lots of integrations with search application</p>
+							<p>Authentication for user-facing applications</p>
+						</aside>
+					</div>
+				</section>
+				<section>
+					<h3>Software We Assist With</h3>
+					<h4>Shopify</h4>
+					<div class="bit-grid">
+						<figure>
+							<img src="shopify.png" />
+						</figure>
+						<aside class="smaller">
+							<p>E-commerce platform for books and courses</p>
+							<p>Assist with discounting and theming</p>
+							<p>Using Shopify Plus for single sign-on</p>
+						</aside>
+					</div>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>Other Software</h2>
+				</section>
+				<section>
+					<h3>Other Software</h3>
+					<h4>Sierra</h4>
+					<div class="bit-grid">
+						<figure>
+							<img src="sierra.png" />
+						</figure>
+						<aside>
+							<p>Library cataloging software</p>
+							<p>Currently migrating from Millennium</p>
+						</aside>
+					</div>
+				</section>
+				<section>
+					<h3>Other Software</h3>
+					<h4>ContentDM</h4>
+					<div class="bit-grid">
+						<figure>
+							<img src="contentdm.png" />
+						</figure>
+						<aside>
+							<p>Digital repository for Special Collections and JHC</p>
+						</aside>
+					</div>
+				</section>
+				<section>
+					<h3>Other Software</h3>
+					<h4>Hubspot</h4>
+					<div class="bit-grid">
+						<figure>
+							<img src="hubspot.png" />
+						</figure>
+						<aside>
+							<p>Digital marketing, forms, and newsletters</p>
+						</aside>
+					</div>
+				</section>
+			</section>
+			<section>
+				<img src="the-end.jpg">
+			</section>
+		</div>
+	</div>
+	<script src="../dist/reveal.js"></script>
+	<script>
+	  // Required, even if empty.
+	  Reveal.initialize({
+	  	dependencies: [
+	  		// Syntax highlight for <code> elements
+			{ src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+		]
+	  });
+	</script>
+</body>
+</html>
